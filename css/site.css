@@ -1,6 +1,6 @@
 #me{
-	height: 400px;
-	width: 600px;
+	height: 250px;
+	width: 375px;
 }
 
 #media{
@@ -10,6 +10,10 @@
 #navigation ul li{
 	list-style-type: none;
 	display: inline;
+}
+
+#projectsheader{
+	text-decoration: underline;
 }
 
 a{
@@ -25,7 +29,16 @@ a{
 	font-family: 'Rancho', cursive;
 }
 
+.projectname{
+	text-decoration: underline;
+}
+
+.projectmedia{
+	height: 16px;
+	width: 16px;
+}
+
 .socialmedia{
-	height: 64px;
-	width: 64px;
+	height: 32px;
+	width: 32px;
 }
