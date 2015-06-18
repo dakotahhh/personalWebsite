@@ -1,0 +1,31 @@
+#me{
+	height: 400px;
+	width: 600px;
+}
+
+#media{
+	display: block;
+}
+
+#navigation ul li{
+	list-style-type: none;
+	display: inline;
+}
+
+a{
+	text-decoration: none;
+	color: #000000;
+}
+
+.gudea{
+	font-family:'Gudea', sans-serif;
+}
+
+.rancho{
+	font-family: 'Rancho', cursive;
+}
+
+.socialmedia{
+	height: 64px;
+	width: 64px;
+}
