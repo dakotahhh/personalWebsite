@@ -1,59 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="dakotahReyes">
 	<meta charset="UTF-8">
 	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="scripts/jquery-1.11.1.min.js"></script>
+		<script src="scripts/angular-route.min.js"></script>
+		<script src="scripts/site.js"></script>
+		<script src="scripts/imageController.js"></script>
 		<link href="css/site.css" rel="stylesheet" type="text/css"/>
 		<link href="http://fonts.googleapis.com/css?family=Rancho" rel="stylesheet" type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
-		<link rel="shortcut icon" type="image/x-icon" href="images/titleicon.png" />
+		<link rel="shortcut icon" type="image/x-icon" href="images/new.ico" />
 		<title>Dakotah Reyes</title>
 	</head>
+
 	<body>
 		<header>
-			<h1 class="rancho">Dakotah Reyes</h1>
-			<nav class="gudea" id="navigation">
+			<span class="rancho"><a href="#/home">Dakotah Reyes</a></span>
+			<nav class="gudea">
 				<ul>
-					<li><a href="Dakotah_Reyes_Resume.doc">Resume</a></li>
+					<li><a href="#/portfolio">Portfolio</a></li>
+					<li><a href="Dakotah_Reyes_Resume.doc" alt="Resume download">Resume</a></li>
 				</ul>
 			</nav>
 		</header>
 
-		<div class="gudea" id="mainBody">
+		<div class="gudea" id="mainBody" ng-controller="imageCtrl">
 
-			<div id="sidebar">
-				<img id="me" src="images/dakotahnpup.jpg" />
-				<h3>My name is Dakotah Reyes</h3>
-				<p>I'm a Texas native living in Sandy, UT.</p>
-				<p>
-					You can find me on:
+			<ng-view>Loading...</ng-view>
+
+			<script type="text/ng-template" id="home.html">
+
+				<div id="about">
+					<img id="me" src="images/dakotahnpup.jpg" />
+					<div id="aboutcontent">
+						<h3>My name is Dakotah Reyes</h3>
+						<p>Texas native living in Sandy, UT.</p>
+						<p>Web/Software Developer by day and art enthusiast by night. On this site, you can find my resume as well as things I have painted or drawn.</p>
+						<p>You can find me on:</p>
 						<div id="media">
-							<p>
-							<img class="socialmedia" src="images/instagram.png" href="instagram.com/duckotah" />
-							<span><a href="instagram.com/duckotah">duckotah</a></span>
-							<img class="socialmedia" src="images/twitter.png" href="twitter.com/pamushiberia"/>
-							<span><a href="twitter.com/pamushiberia">@pamushiberia</a></span>
-							</p>
-							<p>
-							<img class="socialmedia" src="images/github.png" href="github.com/dakotahhh" />
-							<span><a href="github.com/dakotahhh">dakotahhh</a></span>
-							<img class="socialmedia" src="images/linkedin.png" href="linkedin.com/pub/dakotah-reyes/39/669/427"/>
-							<span><a href="linkedin.com/pub/dakotah-reyes/39/669/427">Dakotah Reyes</a></span>
-							</p>
+								<p>
+								<img class="socialmedia" align="middle" src="images/instagram.png" href="http://www.instagram.com/duckotah" />
+								<span><a href="http://www.instagram.com/duckotah">duckotah</a></span>
+								<img class="socialmedia" align="middle" src="images/twitter.png" href="http://www.twitter.com/pamushiberia"/>
+								<span><a href="http://www.twitter.com/pamushiberia">@pamushiberia</a></span>
+								</p>
+								<p>
+								<img class="socialmedia" align="middle" src="images/github.png" href="http://www.github.com/dakotahhh" />
+								<span><a href="http://www.github.com/dakotahhh">dakotahhh</a></span>
+								<img class="socialmedia" align="middle" src="images/linkedin.png" href="http://www.linkedin.com/pub/dakotah-reyes/39/669/427"/>
+								<span><a href="http://www.linkedin.com/pub/dakotah-reyes/39/669/427">Dakotah Reyes</a></span>
+								</p>
 						</div>
-				</p>
-			</div>
+					</div>
+				</div>
 
-			<div>
-				<h1 class="rancho" id="projectheader">Projects</h1>
-				<h3 class="gudea" class="projectname">Daydream Family Dentistry</h3>
-				<a href="github.com/dakotahhh/daydreamFamilyDentistry"><img src="images/github.png" class="projectmedia" /></a>
-				<h3 class="gudea" class="projectname">Personal Website</h3>
-				<a href="github.com/dakotahhh/personalWebsite"><img src="images/github.png" class="projectmedia" /></a>
-				<h3 class="gudea" class="projectname">Meg Canal Personal Webite</h3>
-				<a href="github.com/dakotahhh/megCanalAngular"><img src="images/github.png" class="projectmedia" /></a>
-				<h3 class="gudea" class="projectname">Mommy's Little Helper</h3>
-				<a href="github.com/dakotahhh/dreyes.MommysLittleHelper"><img src="images/github.png" class="projectmedia" /></a>
-			</div>
+				<div id="mainContent">
+					<h2>Mixed Media</h2>
+					<div class="art">
+						<div class="description" ng-repeat="image in mixedImages">
+							<figure>
+								<img class="vertical" ng-src="images/art/mixed/{{image.source}}"/>
+								<figcaption>
+									<p>{{image.name}}</p>
+									<p>{{image.size}}</p>
+									<p>Media: {{image.media}}</p>
+									<p>{{image.date}}</p>
+								</figcaption>
+							</figure>
+						</div>
+					</div>
+					<h2>Pen Work</h2>
+					<div class="art">
+						<div class="description" ng-repeat="image in penImages">
+							<figure>
+								<img class="vertical" ng-src="images/art/pen/{{image.source}}"/>
+								<figcaption>
+									<p>{{image.name}}</p>
+									<p>{{image.size}}</p>
+									<p>Media: {{image.media}}</p>
+									<p>{{image.date}}</p>
+								</figcaption>
+							</figure>
+						</div>
+					</div>
+					<h2>Pencil</h2>
+					<div class = "art">
+						<div class="description" ng-repeat="image in portraitImages">
+							<figure>
+								<img class="horizontal" ng-src="images/art/portrait/{{image.source}}"/>
+								<figcaption>
+									<p>{{image.name}}</p>
+									<p>{{image.size}}</p>
+									<p>Media: {{image.media}}</p>
+									<p>{{image.date}}</p>
+								</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+				
+			</script>
 
 		</div>
 		
